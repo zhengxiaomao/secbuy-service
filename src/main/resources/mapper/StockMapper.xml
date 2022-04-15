@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.secbuyservice.dao.StockMapper">
+
+    <select id="getProductStocks" parameterType="String" resultType="int">
+        select product_stocks from secbuy_stock where product_name=#{productName}
+    </select>
+
+    <update id="updateProductStock" parameterType="com.example.secbuyservice.entity.Stock" >
+         update secbuy_stock set product_stocks=#{productStocks} where product_name=#{productName}
+    </update>
+
+    <!--    <delete id="delete" parameterType="int">-->
+    <!--        delete from student where id=#{id}-->
+    <!--    </delete>-->
+
+    <insert id="addProductStock" parameterType="com.example.secbuyservice.entity.Stock" useGeneratedKeys="true" keyProperty="id">
+     insert  into secbuy_stock(product_name,product_stocks)values (#{productName},#{productStocks})
+    </insert>
+
+</mapper>
