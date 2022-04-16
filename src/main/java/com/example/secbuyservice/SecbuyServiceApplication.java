@@ -32,12 +32,9 @@ public class SecbuyServiceApplication implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Stock stock = new Stock();
-        stock.setProductName("imac");
-        stock.setProductStocks(100);
-        stockMapper.addProductStock(stock);
-        redisUtil.setValue("iPhone",stockMapper.getProductStocks("iPhone"));
-        redisUtil.setValue("watch", 10);
+
+        redisUtil.setValue("watch",10);
+
     } 
 
 }

@@ -60,7 +60,7 @@ public class SecBuyService {
             order.setProductName(productName);
             order.setOrderUser(userName);
             rabbitTemplate.convertAndSend(RabbitMqConfig.ORDER_EXCHANGE, RabbitMqConfig.ORDER_ROUTING_KEY, order);
-            message = "用户" + userName + "秒杀" + productName + "成功";
+            message = "用户" + userName + "秒杀" + productName + "成功,"+"剩余"+stockMapper.getProductStocks(productName)+"台";
             return ResultReturnUtil.success("0", Constant.SECKILL_SUCCESS,message);
         } else {
             /**
@@ -73,6 +73,7 @@ public class SecBuyService {
             log.info("用户：{}秒杀时商品的库存量没有剩余,秒杀结束", userName);
             message = "商品"+productName+"的库存量没有剩余,秒杀结束";
             return ResultReturnUtil.fail("1",Constant.SECKILL_FAIL,message);
+
         }
 
     }

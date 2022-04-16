@@ -50,8 +50,8 @@ class SecbuyServiceApplicationTests {
 //        System.out.println(simpleDateFormat.format(new Date()));
         Stock  stock = new Stock();
         stock.setProductStocks(82);
-        stock.setProductName("iPhone");
-        stockMapper.updateProductStock(stock);
+        stock.setProductName("watch");
+        stockMapper.addProductStock(stock);
         System.out.println(stockMapper.getProductStocks("iPhone"));
     }
 
